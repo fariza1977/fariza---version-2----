@@ -1,14 +1,9 @@
-<?php
-/*
-Template Name: Plantilla Únete al Club
-*/
-?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="scroll-smooth">
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <title>Únete al Club - CuidaMiHuella</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
@@ -48,23 +43,21 @@ Template Name: Plantilla Únete al Club
         footer .social-links a { color: var(--text-medium); }
         footer .social-links a:hover { color: var(--primary-color); }
     </style>
-    <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body>
 
-    <!-- Header (Similar al de las otras páginas para consistencia) -->
+    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
+                <a href="index.html" class="flex items-center space-x-2 text-2xl font-bold text-violet-800">
                     <i class="fas fa-paw text-violet-500"></i>
                     <span>CuidaMiHuella</span>
                 </a>
                 <nav class="hidden md:flex space-x-8">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-600 font-medium">Inicio</a>
-                    <!-- El enlace a "Únete al Club" ahora puede apuntar a esta misma página -->
-                    <a href="<?php echo esc_url( get_permalink() ); ?>" class="text-violet-600 font-bold">Únete al Club</a>
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>#shelters" class="text-gray-600 font-medium">Para Protectoras</a>
+                    <a href="index.html" class="text-gray-600 font-medium">Inicio</a>
+                    <a href="unete-al-club.html" class="text-violet-600 font-bold">Únete al Club</a>
+                    <a href="index.html#shelters" class="text-gray-600 font-medium">Para Protectoras</a>
                 </nav>
                  <div class="flex items-center space-x-4">
                     <a href="#" class="hidden sm:inline-block px-4 py-2 text-sm font-medium text-violet-600 border border-violet-600 rounded-lg hover:bg-violet-600 hover:text-white transition">Acceder / Mi Cuenta</a>
@@ -72,6 +65,15 @@ Template Name: Plantilla Únete al Club
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <a href="index.html" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
+            <a href="unete-al-club.html" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="index.html#shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
+            <div class="p-4 border-t">
+               <a href="#" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold">Acceder / Mi Cuenta</a>
             </div>
         </div>
     </header>
@@ -157,9 +159,9 @@ Template Name: Plantilla Únete al Club
                 <div>
                     <h3 class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
                     <ul class="space-y-2">
-                        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
-                        <li><a href="#">Únete al Club</a></li>
-                        <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>#shelters">Para Protectoras</a></li>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="unete-al-club.html">Únete al Club</a></li>
+                        <li><a href="index.html#shelters">Para Protectoras</a></li>
                     </ul>
                 </div>
                 <div>
@@ -195,6 +197,5 @@ Template Name: Plantilla Únete al Club
         }
     });
     </script>
-    <?php wp_footer(); ?>
 </body>
 </html>
