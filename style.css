@@ -1,1 +1,119 @@
+/*
+Theme Name: CuidaMiHuella Theme
+Theme URI: https://example.com/cuidamihuella-theme/
+Author: Tu Nombre
+Author URI: https://example.com/
+Description: Un tema personalizado para CuidaMiHuella, enfocado en la adopción responsable de animales. Moderno, rápido y totalmente responsive.
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: adopcion, animales, mascotas, responsive
+Text Domain: cuidamihuella
+*/
+
+/*
+--------------------------------------------------------------------------------
+   NOTA IMPORTANTE:
+   Este tema utiliza Tailwind CSS para la mayor parte de su diseño.
+   Este archivo style.css se utiliza para la declaración del tema y para
+   añadir estilos globales y efectos visuales que complementan a Tailwind.
+--------------------------------------------------------------------------------
+*/
+
+/* --- Variables de Color y Globales --- */
+:root {
+    --primary-color: #2563eb; /* blue-600 */
+    --primary-hover: #1d4ed8; /* blue-700 */
+    --text-dark: #1f2937;     /* gray-800 */
+    --text-medium: #374151;   /* gray-700 */
+    --bg-light: #f9fafb;      /* gray-50 */
+    --shadow-light: rgba(0, 0, 0, 0.05);
+    --shadow-medium: rgba(0, 0, 0, 0.1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-medium);
+    background-color: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Transiciones y Efectos de Hover --- */
+
+/* Transiciones suaves para una experiencia de usuario fluida */
+a, button, .plan, .value-card, .step {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Efecto de "lift" para tarjetas y botones al pasar el ratón */
+.value-card:hover, .plan:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px -5px var(--shadow-medium), 0 10px 10px -5px var(--shadow-light);
+}
+
+/* Efecto sutil para botones */
+a[class*="bg-blue-600"]:hover, button[class*="bg-blue-600"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4);
+}
+
+/* --- Estilos de Componentes Específicos --- */
+
+/* Navegación - Efecto de subrayado sutil al pasar el ratón */
+header nav a {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after {
+    width: 100%;
+}
+
+/* Animación para los iconos de la sección de "Pasos" */
+.step:hover .fa-hand-holding-heart,
+.step:hover .fa-home,
+.step:hover .fa-medal {
+    transform: scale(1.15) rotate(-8deg);
+    color: var(--primary-hover);
+}
+
+/* --- Estilos del Tema Original --- */
+
+/* Estilo para la imagen de fondo de la sección Hero */
+.hero {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Color de fondo para la sección de llamada a la acción para protectoras */
+.shelters-cta {
+    background-color: var(--primary-color);
+}
+
+/* Estilos para el plan de membresía "Popular" */
+.plan.popular {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.plan.popular:hover {
+    transform: scale(1.08) translateY(-8px); /* Aumentar el efecto en hover */
+}
 
