@@ -1,239 +1,484 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CuidaMiHuella - Adopción Responsable</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados y configuración de Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* gray-700 */
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x1080/a0aec0/ffffff?text=Animales+Felices');
+            background-size: cover;
+            background-position: center;
+        }
+        .shelters-cta {
+            background-color: #2563eb; /* blue-600 */
+        }
+        .plan.popular {
+            border-color: #2563eb; /* blue-600 */
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50">
+
     <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo">
-                <i class="fas fa-paw"></i>
-                CuidaMiHuella
-            </a>
-            
-            <nav id="mainNav">
-                <ul id="navList">
-                    <li><a href="#hero" data-key="nav_home">Inicio</a></li>
-                    <li><a href="#membership" data-key="nav_join">Únete al Club</a></li>
-                    <li><a href="#shelters" data-key="nav_shelters">Para Protectoras</a></li>
-                    <li><a href="#process" data-key="nav_find">Busca a tu Compañero</a></li>
-                    <li><a href="#membership" data-key="nav_club">El Club</a></li>
-                    <li><a href="#footer" data-key="nav_about">Sobre Nosotros</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-actions">
-                <div class="language-selector">
-                    <select id="languageSelect">
-                        <option value="es">🇪🇸 ES</option>
-                        <option value="eu">🇪🇺 EU</option>
-                        <option value="ca">🇨🇦 CA</option>
-                        <option value="en">🇬🇧 EN</option>
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="de">🇩🇪 DE</option>
-                    </select>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center space-x-2 text-2xl font-bold text-gray-800">
+                    <i class="fas fa-paw text-blue-600"></i>
+                    <span>CuidaMiHuella</span>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#hero" data-key="nav_home" class="text-gray-600 hover:text-blue-600 transition">Inicio</a>
+                    <a href="#membership" data-key="nav_join" class="text-gray-600 hover:text-blue-600 transition">Únete al Club</a>
+                    <a href="#shelters" data-key="nav_shelters" class="text-gray-600 hover:text-blue-600 transition">Para Protectoras</a>
+                    <a href="#process" data-key="nav_find" class="text-gray-600 hover:text-blue-600 transition">Busca a tu Compañero</a>
+                    <a href="#footer" data-key="nav_about" class="text-gray-600 hover:text-blue-600 transition">Sobre Nosotros</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="language-selector">
+                        <select id="languageSelect" class="bg-gray-100 border-gray-300 rounded-md py-1 px-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="es">🇪🇸 ES</option>
+                            <option value="eu">🏴‍☠️ EU</option> <!-- Placeholder flag for Basque -->
+                            <option value="ca">CAT</option> <!-- Placeholder for Catalan -->
+                            <option value="en">🇬🇧 EN</option>
+                            <option value="fr">🇫🇷 FR</option>
+                            <option value="de">🇩🇪 DE</option>
+                        </select>
+                    </div>
+                    <a href="#" class="hidden sm:inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold" data-key="nav_account">Acceder</a>
+                    <button class="md:hidden text-2xl" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
-                <a href="#" class="btn btn-outline" id="accountBtn">Acceder / Mi Cuenta</a>
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <a href="#hero" data-key="nav_home" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Inicio</a>
+            <a href="#membership" data-key="nav_join" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Únete al Club</a>
+            <a href="#shelters" data-key="nav_shelters" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Para Protectoras</a>
+            <a href="#process" data-key="nav_find" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Busca a tu Compañero</a>
+            <a href="#footer" data-key="nav_about" class="block py-3 px-4 text-gray-600 hover:bg-gray-100">Sobre Nosotros</a>
+            <div class="p-4 border-t">
+                <a href="#" class="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition font-semibold" data-key="nav_account">Acceder</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 id="heroTitle">La Adopción ha Cambiado. Para Siempre.</h1>
-            <p id="heroSubtitle">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal. Descubre un proceso seguro, con seguro incluido, y una comunidad que te acompaña para toda la vida.</p>
-            <div class="hero-buttons">
-                <a href="#membership" class="btn btn-primary" id="heroBtn1">Descubre el Club</a>
-                <a href="#process" class="btn btn-secondary" id="heroBtn2">Busca a tu Compañero</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Proposition -->
-    <section class="section value-prop">
-        <div class="container">
-            <h2 class="section-title" id="valueTitle">Un Club para Todos los que Aman a los Animales</h2>
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 id="adoptTitle">¿Pensando en Adoptar?</h3>
-                    <p id="adoptText">Elimina el miedo con nuestra "Experiencia de Acogida". Convive con tu futuro compañero durante 3 semanas de forma segura y toma la decisión más importante de tu vida con el corazón y la cabeza.</p>
-                    <a href="#process" class="btn btn-outline" id="adoptLink">Saber más sobre la Experiencia ></a>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 id="petOwnerTitle">¿Ya Tienes Mascota?</h3>
-                    <p id="petOwnerText">Únete a la comunidad de dueños más comprometida de España. Accede a nuestra red de descuentos, foros con expertos, cadena de favores y mucho más. Dale a tu mascota los beneficios que se merece.</p>
-                    <a href="#membership" class="btn btn-outline" id="petOwnerLink">Hazte Socio Amigo ></a>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero text-white" id="hero">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[60vh] py-20">
+                <h1 data-key="heroTitle" class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">La Adopción ha Cambiado. Para Siempre.</h1>
+                <p data-key="heroSubtitle" class="max-w-3xl text-lg md:text-xl mb-8 font-light">Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal. Descubre un proceso seguro, con seguro incluido, y una comunidad que te acompaña para toda la vida.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#membership" data-key="heroBtn1" class="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold text-lg hover:bg-gray-200 transition transform hover:scale-105">Descubre el Club</a>
+                    <a href="#process" data-key="heroBtn2" class="border-2 border-white text-white px-8 py-3 rounded-md font-semibold text-lg hover:bg-white hover:text-blue-600 transition transform hover:scale-105">Busca a tu Compañero</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Process Section -->
-    <section class="section process" id="process">
-        <div class="container">
-            <h2 class="section-title" id="processTitle">Tu Viaje hacia el Compañero Perfecto, en 3 Pasos Seguros</h2>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 id="step1Title">Únete al Club y Activa tu Pack</h3>
-                    <p id="step1Text">Por una cuota única de 89€ activas tu "Pack de Bienvenida y Tranquilidad Total". Incluye tu seguro, la desparasitación del animal y un donativo a la protectora.</p>
+        <!-- Value Proposition -->
+        <section class="py-16 md:py-24 bg-white" id="value-prop">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 data-key="valueTitle" class="text-3xl md:text-4xl font-bold text-gray-800">Un Club para Todos los que Aman a los Animales</h2>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-home"></i>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center">
+                        <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-heart"></i></div>
+                        <h3 data-key="adoptTitle" class="text-2xl font-bold mb-3">¿Pensando en Adoptar?</h3>
+                        <p data-key="adoptText" class="mb-6">Elimina el miedo con nuestra "Experiencia de Acogida". Convive con tu futuro compañero durante 3 semanas de forma segura y toma la decisión más importante de tu vida con el corazón y la cabeza.</p>
+                        <a href="#process" data-key="adoptLink" class="font-semibold text-blue-600 hover:underline">Saber más sobre la Experiencia ></a>
                     </div>
-                    <h3 id="step2Title">Vive la Experiencia de Acogida</h3>
-                    <p id="step2Text">Elige un animal y disfrútalo en casa durante 3 semanas. Descubre su verdadero carácter y si sois el match perfecto, con el apoyo de nuestra comunidad.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-medal"></i>
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-lg text-center">
+                        <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-users"></i></div>
+                        <h3 data-key="petOwnerTitle" class="text-2xl font-bold mb-3">¿Ya Tienes Mascota?</h3>
+                        <p data-key="petOwnerText" class="mb-6">Únete a la comunidad de dueños más comprometida de España. Accede a nuestra red de descuentos, foros con expertos, cadena de favores y mucho más. Dale a tu mascota los beneficios que se merece.</p>
+                        <a href="#membership" data-key="petOwnerLink" class="font-semibold text-blue-600 hover:underline">Hazte Socio Amigo ></a>
                     </div>
-                    <h3 id="step3Title">Celebra tu Éxito</h3>
-                    <p id="step3Text">Formaliza una adopción basada en la realidad, no en una corazonada. La firma final con la protectora es solo un trámite para celebrar lo que ya sabes.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials -->
-    <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title" id="testimonialsTitle">Las Historias que nos Impulsan</h2>
-            <div class="testimonial-container">
-                <div class="testimonial-card">
-                    <p class="testimonial-text" id="testimonialText">La "Experiencia de Acogida" fue clave. Descubrimos que necesitábamos un perro tranquilo como Bruno. Sin este proceso, nos habríamos equivocado.</p>
-                    <p class="testimonial-author" id="testimonialAuthor">— Laura y David, Socios Fundadores y familia de Bruno.</p>
+        <!-- Process Section -->
+        <section class="py-16 md:py-24" id="process">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 data-key="processTitle" class="text-3xl md:text-4xl font-bold text-gray-800">Tu Viaje hacia el Compañero Perfecto, en 3 Pasos Seguros</h2>
                 </div>
-                <div class="testimonial-nav">
-                    <button id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
-                    <button id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div class="step p-6">
+                        <div class="relative mb-6">
+                            <div class="text-6xl text-blue-600"><i class="fas fa-hand-holding-heart"></i></div>
+                            <div class="absolute -top-4 -left-2 w-12 h-12 bg-blue-100 text-blue-700 font-bold text-2xl rounded-full flex items-center justify-center border-4 border-gray-50">1</div>
+                        </div>
+                        <h3 data-key="step1Title" class="text-xl font-bold mb-2">Únete al Club y Activa tu Pack</h3>
+                        <p data-key="step1Text">Por una cuota única de 89€ activas tu "Pack de Bienvenida y Tranquilidad Total". Incluye tu seguro, la desparasitación del animal y un donativo a la protectora.</p>
+                    </div>
+                    <div class="step p-6">
+                        <div class="relative mb-6">
+                            <div class="text-6xl text-blue-600"><i class="fas fa-home"></i></div>
+                            <div class="absolute -top-4 -left-2 w-12 h-12 bg-blue-100 text-blue-700 font-bold text-2xl rounded-full flex items-center justify-center border-4 border-gray-50">2</div>
+                        </div>
+                        <h3 data-key="step2Title" class="text-xl font-bold mb-2">Vive la Experiencia de Acogida</h3>
+                        <p data-key="step2Text">Elige un animal y disfrútalo en casa durante 3 semanas. Descubre su verdadero carácter y si sois el match perfecto, con el apoyo de nuestra comunidad.</p>
+                    </div>
+                    <div class="step p-6">
+                        <div class="relative mb-6">
+                            <div class="text-6xl text-blue-600"><i class="fas fa-medal"></i></div>
+                            <div class="absolute -top-4 -left-2 w-12 h-12 bg-blue-100 text-blue-700 font-bold text-2xl rounded-full flex items-center justify-center border-4 border-gray-50">3</div>
+                        </div>
+                        <h3 data-key="step3Title" class="text-xl font-bold mb-2">Celebra tu Éxito</h3>
+                        <p data-key="step3Text">Formaliza una adopción basada en la realidad, no en una corazonada. La firma final con la protectora es solo un trámite para celebrar lo que ya sabes.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Shelters CTA -->
-    <section class="shelters-cta" id="shelters">
-        <div class="container">
-            <h2 id="sheltersTitle">¿Eres una Protectora o Centro de Acogida?</h2>
-            <p id="sheltersText">Descubre cómo nuestra plataforma puede ahorrarte horas de trabajo, reducir las devoluciones y generarte una nueva vía de financiación. A coste cero.</p>
-            <a href="#" class="btn btn-primary" id="sheltersBtn">Colabora con Nosotros</a>
-        </div>
-    </section>
-
-    <!-- Membership Section -->
-    <section class="section membership" id="membership">
-        <div class="container">
-            <h2 class="section-title">El Club para los que Aman de Verdad a sus Animales</h2>
-            <p class="text-center mb-5" id="membershipSubtitle">Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.</p>
-            
-            <div class="membership-plans">
-                <div class="plan">
-                    <div class="plan-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 id="founderTitle">SOCIO FUNDADOR</h3>
-                    <p class="plan-desc" id="founderDesc">Para los que inician su viaje adoptando con nosotros.</p>
-                    <div class="plan-price" id="founderPrice">89 €</div>
-                    <p class="plan-renewal" id="founderRenewal">29,90 €/año</p>
-                    <ul class="plan-benefits">
-                        <li><i class="fas fa-check"></i> <span id="benefit1">Acceso a la "Experiencia de Acogida"</span></li>
-                        <li><i class="fas fa-check"></i> <span id="benefit2">Seguro de RC y Accidentes incluido en el Pack</span></li>
-                        <li><i class="fas fa-check"></i> <span id="benefit3">Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad)</span></li>
-                        <li><i class="fas fa-check"></i> <span id="benefit4">Acceso EXCLUSIVO a la "Cadena de Favores" con estatus verificado</span></li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" id="founderBtn">Inicia tu Adopción</a>
+        <!-- Testimonials -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 data-key="testimonialsTitle" class="text-3xl md:text-4xl font-bold text-gray-800">Las Historias que nos Impulsan</h2>
                 </div>
-                
-                <div class="plan popular">
-                    <div class="plan-icon">
-                        <i class="fas fa-user-friends"></i>
+                <div class="relative max-w-3xl mx-auto">
+                    <div id="testimonial-container" class="overflow-hidden">
+                        <!-- Testimonials will be injected here by JS -->
                     </div>
-                    <h3 id="friendTitle">SOCIO AMIGO</h3>
-                    <p class="plan-desc" id="friendDesc">Para los que ya tienen mascota y quieren unirse al club.</p>
-                    <div class="plan-price" id="friendPrice">39,90 €</div>
-                    <p class="plan-renewal" id="friendRenewal">29,90 €/año (¡Tu lealtad tiene premio!)</p>
-                    <ul class="plan-benefits">
-                        <li><i class="fas fa-check"></i> <span id="benefit5">Acceso COMPLETO a la Red de Descuentos</span></li>
-                        <li><i class="fas fa-check"></i> <span id="benefit6">Acceso COMPLETO a los Foros de Expertos y Comunidad</span></li>
-                        <li><i class="fas fa-check"></i> <span id="benefit7">Posibilidad de acceder a la "Cadena de Favores" tras un proceso de verificación</span></li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" id="friendBtn">Hazte Socio Amigo Ahora</a>
+                    <button id="prevTestimonial" class="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-12 bg-white rounded-full shadow-md w-12 h-12 flex items-center justify-center text-blue-600 hover:bg-gray-100 transition"><i class="fas fa-chevron-left"></i></button>
+                    <button id="nextTestimonial" class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-12 bg-white rounded-full shadow-md w-12 h-12 flex items-center justify-center text-blue-600 hover:bg-gray-100 transition"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Shelters CTA -->
+        <section class="shelters-cta text-white" id="shelters">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-20">
+                <h2 data-key="sheltersTitle" class="text-3xl md:text-4xl font-bold mb-4">¿Eres una Protectora o Centro de Acogida?</h2>
+                <p data-key="sheltersText" class="max-w-2xl mx-auto text-lg mb-8">Descubre cómo nuestra plataforma puede ahorrarte horas de trabajo, reducir las devoluciones y generarte una nueva vía de financiación. A coste cero.</p>
+                <a href="#" data-key="sheltersBtn" class="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold text-lg hover:bg-gray-200 transition transform hover:scale-105">Colabora con Nosotros</a>
+            </div>
+        </section>
+
+        <!-- Membership Section -->
+        <section class="py-16 md:py-24" id="membership">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 data-key="membershipTitle" class="text-3xl md:text-4xl font-bold text-gray-800">El Club para los que Aman de Verdad a sus Animales</h2>
+                    <p data-key="membershipSubtitle" class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="plan bg-white p-8 rounded-lg shadow-xl border-2 border-transparent w-full max-w-md">
+                        <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-star"></i></div>
+                        <h3 data-key="founderTitle" class="text-2xl font-bold uppercase tracking-wider">Socio Fundador</h3>
+                        <p data-key="founderDesc" class="text-gray-600 mb-4">Para los que inician su viaje adoptando con nosotros.</p>
+                        <div data-key="founderPrice" class="text-5xl font-extrabold mb-1">89 €</div>
+                        <p data-key="founderRenewal" class="text-gray-500 mb-6 text-sm">Pago único + 29,90 €/año a partir del 2º año</p>
+                        <ul class="space-y-3 text-left mb-8">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit1">Acceso a la "Experiencia de Acogida"</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit2">Seguro de RC y Accidentes incluido en el Pack</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit3">Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad)</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit4">Acceso EXCLUSIVO a la "Cadena de Favores" con estatus verificado</span></li>
+                        </ul>
+                        <a href="#" data-key="founderBtn" class="w-full text-center bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition font-semibold text-lg">Inicia tu Adopción</a>
+                    </div>
+                    <div class="plan popular bg-white p-8 rounded-lg shadow-xl border-2 w-full max-w-md">
+                         <div class="text-4xl text-blue-600 mb-4"><i class="fas fa-user-friends"></i></div>
+                        <h3 data-key="friendTitle" class="text-2xl font-bold uppercase tracking-wider">Socio Amigo</h3>
+                        <p data-key="friendDesc" class="text-gray-600 mb-4">Para los que ya tienen mascota y quieren unirse al club.</p>
+                        <div data-key="friendPrice" class="text-5xl font-extrabold mb-1">39,90 €</div>
+                        <p data-key="friendRenewal" class="text-gray-500 mb-6 text-sm">Cuota anual (¡Tu lealtad tiene premio!)</p>
+                        <ul class="space-y-3 text-left mb-8">
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit5">Acceso COMPLETO a la Red de Descuentos</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit6">Acceso COMPLETO a los Foros de Expertos y Comunidad</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-green-500 mr-3 mt-1"></i> <span data-key="benefit7">Posibilidad de acceder a la "Cadena de Favores" tras un proceso de verificación</span></li>
+                        </ul>
+                        <a href="#" data-key="friendBtn" class="w-full text-center bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition font-semibold text-lg">Hazte Socio Amigo Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer id="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>CuidaMiHuella</h3>
-                    <p id="footerSlogan">Zure aztarna zaintzen dugu.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <footer class="bg-gray-800 text-white" id="footer">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2 md:col-span-1">
+                    <h3 class="text-xl font-bold mb-4">CuidaMiHuella</h3>
+                    <p data-key="footerSlogan" class="text-gray-400 mb-4">Cuidando su huella, cambiando tu vida.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in text-xl"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3 id="footerNavTitle">Navegación</h3>
-                    <ul>
-                        <li><a href="#hero" data-key="nav_home">Inicio</a></li>
-                        <li><a href="#membership" data-key="nav_join">Únete al Club</a></li>
-                        <li><a href="#shelters" data-key="nav_shelters">Para Protectoras</a></li>
-                        <li><a href="#process" data-key="nav_find">Busca a tu Compañero</a></li>
-                        <li><a href="#membership" data-key="nav_club">El Club</a></li>
-                        <li><a href="#footer" data-key="nav_about">Sobre Nosotros</a></li>
+                <div>
+                    <h3 data-key="footerNavTitle" class="font-semibold mb-4 uppercase tracking-wider">Navegación</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" data-key="nav_home" class="text-gray-400 hover:text-white">Inicio</a></li>
+                        <li><a href="#membership" data-key="nav_join" class="text-gray-400 hover:text-white">Únete al Club</a></li>
+                        <li><a href="#shelters" data-key="nav_shelters" class="text-gray-400 hover:text-white">Para Protectoras</a></li>
+                        <li><a href="#process" data-key="nav_find" class="text-gray-400 hover:text-white">Busca a tu Compañero</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3 id="footerLegalTitle">Legal</h3>
-                    <ul>
-                        <li><a href="#" id="legal1">Aviso Legal</a></li>
-                        <li><a href="#" id="legal2">Política de Privacidad</a></li>
-                        <li><a href="#" id="legal3">Política de Cookies</a></li>
-                        <li><a href="#" id="legal4">Términos y Condiciones</a></li>
+                <div>
+                    <h3 data-key="footerLegalTitle" class="font-semibold mb-4 uppercase tracking-wider">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" data-key="legal1" class="text-gray-400 hover:text-white">Aviso Legal</a></li>
+                        <li><a href="#" data-key="legal2" class="text-gray-400 hover:text-white">Política de Privacidad</a></li>
+                        <li><a href="#" data-key="legal3" class="text-gray-400 hover:text-white">Política de Cookies</a></li>
+                        <li><a href="#" data-key="legal4" class="text-gray-400 hover:text-white">Términos y Condiciones</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3 id="footerHelpTitle">Ayuda</h3>
-                    <ul>
-                        <li><a href="#" id="help1">Contacto</a></li>
-                        <li><a href="#" id="help2">Preguntas Frecuentes (FAQ)</a></li>
+                <div>
+                    <h3 data-key="footerHelpTitle" class="font-semibold mb-4 uppercase tracking-wider">Ayuda</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" data-key="help1" class="text-gray-400 hover:text-white">Contacto</a></li>
+                        <li><a href="#" data-key="help2" class="text-gray-400 hover:text-white">Preguntas Frecuentes (FAQ)</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="copyright" id="copyright">
+            <div data-key="copyright" class="border-t border-gray-700 pt-6 text-center text-gray-500 text-sm">
                 © 2025 CuidamiHuella. Todos los derechos reservados.
             </div>
         </div>
     </footer>
 
-    <script src="lang.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobile Menu ---
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- Testimonials ---
+            const testimonials = [
+                {
+                    text_key: "testimonial1_text",
+                    author_key: "testimonial1_author",
+                    text_es: "La 'Experiencia de Acogida' fue clave. Descubrimos que necesitábamos un perro tranquilo como Bruno. Sin este proceso, nos habríamos equivocado.",
+                    author_es: "— Laura y David, Socios Fundadores y familia de Bruno.",
+                    text_en: "The 'Fostering Experience' was key. We discovered we needed a calm dog like Bruno. Without this process, we would have made a mistake.",
+                    author_en: "— Laura & David, Founding Members and Bruno's family.",
+                },
+                {
+                    text_key: "testimonial2_text",
+                    author_key: "testimonial2_author",
+                    text_es: "Ser Socio Amigo nos ha dado acceso a descuentos increíbles y a una comunidad que de verdad entiende lo que es tener mascota. ¡Totalmente recomendado!",
+                    author_es: "— Marta G., Socia Amiga y humana de Luna.",
+                    text_en: "Being a Friend Member has given us access to incredible discounts and a community that truly understands what it's like to have a pet. Highly recommended!",
+                    author_en: "— Marta G., Friend Member and Luna's human.",
+                },
+                 {
+                    text_key: "testimonial3_text",
+                    author_key: "testimonial3_author",
+                    text_es: "Como protectora, CuidamiHuella nos ha quitado un peso de encima. El proceso de selección es mucho más fiable y las devoluciones han bajado a cero.",
+                    author_es: "— Responsable de Adopciones, Protectora 'Animales con Futuro'.",
+                    text_en: "As a shelter, CuidamiHuella has taken a weight off our shoulders. The selection process is much more reliable, and returns have dropped to zero.",
+                    author_en: "— Head of Adoptions, 'Animals with a Future' Shelter.",
+                }
+            ];
+            let currentTestimonial = 0;
+            const container = document.getElementById('testimonial-container');
+            const prevBtn = document.getElementById('prevTestimonial');
+            const nextBtn = document.getElementById('nextTestimonial');
+            
+            function renderTestimonial() {
+                const testimonial = testimonials[currentTestimonial];
+                const lang = document.getElementById('languageSelect').value;
+                const text = testimonial[`text_${lang}`] || testimonial.text_es;
+                const author = testimonial[`author_${lang}`] || testimonial.author_es;
+
+                container.innerHTML = `
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center transition-opacity duration-500">
+                        <p class="testimonial-text text-xl italic text-gray-600 mb-4">"${text}"</p>
+                        <p class="testimonial-author font-semibold text-gray-800">${author}</p>
+                    </div>`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                renderTestimonial();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                renderTestimonial();
+            });
+
+
+            // --- Language Switcher ---
+            const translations = {
+                es: {
+                    nav_home: "Inicio",
+                    nav_join: "Únete al Club",
+                    nav_shelters: "Para Protectoras",
+                    nav_find: "Busca a tu Compañero",
+                    nav_about: "Sobre Nosotros",
+                    nav_account: "Acceder",
+                    heroTitle: "La Adopción ha Cambiado. Para Siempre.",
+                    heroSubtitle: "Bienvenido a CuidamiHuella, el club que transforma el miedo a adoptar en la certeza de haber encontrado a tu compañero ideal. Descubre un proceso seguro, con seguro incluido, y una comunidad que te acompaña para toda la vida.",
+                    heroBtn1: "Descubre el Club",
+                    heroBtn2: "Busca a tu Compañero",
+                    valueTitle: "Un Club para Todos los que Aman a los Animales",
+                    adoptTitle: "¿Pensando en Adoptar?",
+                    adoptText: "Elimina el miedo con nuestra 'Experiencia de Acogida'. Convive con tu futuro compañero durante 3 semanas de forma segura y toma la decisión más importante de tu vida con el corazón y la cabeza.",
+                    adoptLink: "Saber más sobre la Experiencia >",
+                    petOwnerTitle: "¿Ya Tienes Mascota?",
+                    petOwnerText: "Únete a la comunidad de dueños más comprometida de España. Accede a nuestra red de descuentos, foros con expertos, cadena de favores y mucho más. Dale a tu mascota los beneficios que se merece.",
+                    petOwnerLink: "Hazte Socio Amigo >",
+                    processTitle: "Tu Viaje hacia el Compañero Perfecto, en 3 Pasos Seguros",
+                    step1Title: "Únete al Club y Activa tu Pack",
+                    step1Text: "Por una cuota única de 89€ activas tu 'Pack de Bienvenida y Tranquilidad Total'. Incluye tu seguro, la desparasitación del animal y un donativo a la protectora.",
+                    step2Title: "Vive la Experiencia de Acogida",
+                    step2Text: "Elige un animal y disfrútalo en casa durante 3 semanas. Descubre su verdadero carácter y si sois el match perfecto, con el apoyo de nuestra comunidad.",
+                    step3Title: "Celebra tu Éxito",
+                    step3Text: "Formaliza una adopción basada en la realidad, no en una corazonada. La firma final con la protectora es solo un trámite para celebrar lo que ya sabes.",
+                    testimonialsTitle: "Las Historias que nos Impulsan",
+                    sheltersTitle: "¿Eres una Protectora o Centro de Acogida?",
+                    sheltersText: "Descubre cómo nuestra plataforma puede ahorrarte horas de trabajo, reducir las devoluciones y generarte una nueva vía de financiación. A coste cero.",
+                    sheltersBtn: "Colabora con Nosotros",
+                    membershipTitle: "El Club para los que Aman de Verdad a sus Animales",
+                    membershipSubtitle: "Tanto si buscas a tu nuevo compañero como si ya lo tienes, CuidamiHuella es el ecosistema de confianza, ahorro y apoyo que necesitas. Elige tu camino para entrar.",
+                    founderTitle: "Socio Fundador",
+                    founderDesc: "Para los que inician su viaje adoptando con nosotros.",
+                    founderPrice: "89 €",
+                    founderRenewal: "Pago único + 29,90 €/año a partir del 2º año",
+                    benefit1: "Acceso a la 'Experiencia de Acogida'",
+                    benefit2: "Seguro de RC y Accidentes incluido en el Pack",
+                    benefit3: "Acceso COMPLETO al Club (Descuentos, Expertos, Comunidad)",
+                    benefit4: "Acceso EXCLUSIVO a la 'Cadena de Favores' con estatus verificado",
+                    founderBtn: "Inicia tu Adopción",
+                    friendTitle: "Socio Amigo",
+                    friendDesc: "Para los que ya tienen mascota y quieren unirse al club.",
+                    friendPrice: "39,90 €",
+                    friendRenewal: "Cuota anual (¡Tu lealtad tiene premio!)",
+                    benefit5: "Acceso COMPLETO a la Red de Descuentos",
+                    benefit6: "Acceso COMPLETO a los Foros de Expertos y Comunidad",
+                    benefit7: "Posibilidad de acceder a la 'Cadena de Favores' tras un proceso de verificación",
+                    friendBtn: "Hazte Socio Amigo Ahora",
+                    footerSlogan: "Cuidando su huella, cambiando tu vida.",
+                    footerNavTitle: "Navegación",
+                    footerLegalTitle: "Legal",
+                    legal1: "Aviso Legal",
+                    legal2: "Política de Privacidad",
+                    legal3: "Política de Cookies",
+                    legal4: "Términos y Condiciones",
+                    footerHelpTitle: "Ayuda",
+                    help1: "Contacto",
+                    help2: "Preguntas Frecuentes (FAQ)",
+                    copyright: "© 2025 CuidamiHuella. Todos los derechos reservados.",
+                },
+                en: {
+                    nav_home: "Home",
+                    nav_join: "Join the Club",
+                    nav_shelters: "For Shelters",
+                    nav_find: "Find your Companion",
+                    nav_about: "About Us",
+                    nav_account: "Login",
+                    heroTitle: "Adoption Has Changed. Forever.",
+                    heroSubtitle: "Welcome to CuidamiHuella, the club that turns the fear of adopting into the certainty of having found your ideal companion. Discover a safe process, insurance included, and a community that supports you for life.",
+                    heroBtn1: "Discover the Club",
+                    heroBtn2: "Find Your Companion",
+                    valueTitle: "A Club for Everyone Who Loves Animals",
+                    adoptTitle: "Thinking of Adopting?",
+                    adoptText: "Eliminate fear with our 'Fostering Experience'. Live with your future companion for 3 weeks safely and make the most important decision of your life with your heart and your head.",
+                    adoptLink: "Learn more about the Experience >",
+                    petOwnerTitle: "Already Have a Pet?",
+                    petOwnerText: "Join the most committed pet owner community in Spain. Access our network of discounts, expert forums, a chain of favors, and much more. Give your pet the benefits it deserves.",
+                    petOwnerLink: "Become a Friend Member >",
+                    processTitle: "Your Journey to the Perfect Companion, in 3 Secure Steps",
+                    step1Title: "Join the Club and Activate Your Pack",
+                    step1Text: "For a one-time fee of €89, you activate your 'Welcome and Total Peace of Mind Pack'. It includes your insurance, the animal's deworming, and a donation to the shelter.",
+                    step2Title: "Live the Fostering Experience",
+                    step2Text: "Choose an animal and enjoy it at home for 3 weeks. Discover its true character and if you are the perfect match, with the support of our community.",
+                    step3Title: "Celebrate Your Success",
+                    step3Text: "Formalize an adoption based on reality, not a hunch. The final signature with the shelter is just a formality to celebrate what you already know.",
+                    testimonialsTitle: "The Stories That Drive Us",
+                    sheltersTitle: "Are You a Shelter or Rescue Center?",
+                    sheltersText: "Discover how our platform can save you hours of work, reduce returns, and generate a new source of funding. At zero cost.",
+                    sheltersBtn: "Collaborate With Us",
+                    membershipTitle: "The Club for Those Who Truly Love Their Animals",
+                    membershipSubtitle: "Whether you're looking for a new companion or already have one, CuidamiHuella is the ecosystem of trust, savings, and support you need. Choose your path to join.",
+                    founderTitle: "Founding Member",
+                    founderDesc: "For those who start their journey by adopting with us.",
+                    founderPrice: "€89",
+                    founderRenewal: "One-time payment + €29.90/year from the 2nd year",
+                    benefit1: "Access to the 'Fostering Experience'",
+                    benefit2: "Liability and Accident Insurance included in the Pack",
+                    benefit3: "FULL access to the Club (Discounts, Experts, Community)",
+                    benefit4: "EXCLUSIVE access to the 'Chain of Favors' with verified status",
+                    founderBtn: "Start Your Adoption",
+                    friendTitle: "Friend Member",
+                    friendDesc: "For those who already have a pet and want to join the club.",
+                    friendPrice: "€39.90",
+                    friendRenewal: "Annual fee (Your loyalty is rewarded!)",
+                    benefit5: "FULL access to the Discount Network",
+                    benefit6: "FULL access to Expert Forums and Community",
+                    benefit7: "Possibility to access the 'Chain of Favors' after a verification process",
+                    friendBtn: "Become a Friend Member Now",
+                    footerSlogan: "Caring for their paw print, changing your life.",
+                    footerNavTitle: "Navigation",
+                    footerLegalTitle: "Legal",
+                    legal1: "Legal Notice",
+                    legal2: "Privacy Policy",
+                    legal3: "Cookie Policy",
+                    legal4: "Terms and Conditions",
+                    footerHelpTitle: "Help",
+                    help1: "Contact",
+                    help2: "Frequently Asked Questions (FAQ)",
+                    copyright: "© 2025 CuidamiHuella. All rights reserved.",
+                },
+                // Add other languages (fr, de, ca, eu) here following the same structure
+            };
+            
+            const languageSelect = document.getElementById('languageSelect');
+            
+            function updateTextContent(lang) {
+                if (!translations[lang]) lang = 'es'; // Fallback to Spanish
+                const elements = document.querySelectorAll('[data-key]');
+                elements.forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    } else if (translations.es[key]) {
+                        el.textContent = translations.es[key]; // Fallback for missing keys in other languages
+                    }
+                });
+                renderTestimonial(); // Re-render testimonial with new language
+            }
+            
+            languageSelect.addEventListener('change', (e) => {
+                updateTextContent(e.target.value);
+            });
+
+            // Initial load
+            updateTextContent(languageSelect.value);
+
+        });
+    </script>
 </body>
 </html>
-
