@@ -4,7 +4,7 @@ Theme URI: https://example.com/cuidamihuella-theme/
 Author: Tu Nombre
 Author URI: https://example.com/
 Description: Un tema personalizado para CuidaMiHuella, enfocado en la adopción responsable de animales. Moderno, rápido y totalmente responsive.
-Version: 1.1
+Version: 1.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: adopcion, animales, mascotas, responsive
@@ -22,11 +22,12 @@ Text Domain: cuidamihuella
 
 /* --- Variables de Color y Globales --- */
 :root {
-    --primary-color: #2563eb; /* blue-600 */
-    --primary-hover: #1d4ed8; /* blue-700 */
-    --text-dark: #1f2937;     /* gray-800 */
+    --primary-color: #8b5cf6; /* violet-500 */
+    --primary-hover: #7c3aed; /* violet-600 */
+    --text-dark: #5b21b6;     /* violet-800 - for headings */
     --text-medium: #374151;   /* gray-700 */
-    --bg-light: #f9fafb;      /* gray-50 */
+    --bg-light: #fdf2f8;      /* pink-50 */
+    --footer-bg: #eff6ff;     /* blue-50 */
     --shadow-light: rgba(0, 0, 0, 0.05);
     --shadow-medium: rgba(0, 0, 0, 0.1);
 }
@@ -43,6 +44,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+h2, h3 {
+    color: var(--text-dark);
+}
+
 /* --- Transiciones y Efectos de Hover --- */
 
 /* Transiciones suaves para una experiencia de usuario fluida */
@@ -56,10 +61,14 @@ a, button, .plan, .value-card, .step {
     box-shadow: 0 15px 25px -5px var(--shadow-medium), 0 10px 10px -5px var(--shadow-light);
 }
 
-/* Efecto sutil para botones */
-a[class*="bg-blue-600"]:hover, button[class*="bg-blue-600"]:hover {
+/* Efecto sutil para botones principales */
+a.bg-blue-600, button.bg-blue-600 {
+    background-color: var(--primary-color) !important;
+}
+a.bg-blue-600:hover, button.bg-blue-600:hover {
+    background-color: var(--primary-hover) !important;
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px -2px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 6px 12px -2px rgba(139, 92, 246, 0.4);
 }
 
 /* --- Estilos de Componentes Específicos --- */
@@ -69,7 +78,9 @@ header nav a {
     position: relative;
     padding-bottom: 6px;
 }
-
+header nav a:hover {
+    color: var(--primary-color);
+}
 header nav a::after {
     content: '';
     position: absolute;
@@ -86,7 +97,15 @@ header nav a:hover::after {
     width: 100%;
 }
 
+/* Iconos de las tarjetas de propuesta de valor */
+.value-card .fa-heart, .value-card .fa-users {
+    color: var(--primary-color);
+}
+
 /* Animación para los iconos de la sección de "Pasos" */
+.step .fas {
+    color: var(--primary-color);
+}
 .step:hover .fa-hand-holding-heart,
 .step:hover .fa-home,
 .step:hover .fa-medal {
@@ -94,7 +113,30 @@ header nav a:hover::after {
     color: var(--primary-hover);
 }
 
-/* --- Estilos del Tema Original --- */
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--text-medium);
+}
+footer h3 {
+    color: var(--text-dark);
+}
+footer a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+footer a:hover {
+    color: var(--primary-hover);
+}
+footer .social-links a {
+    color: var(--text-medium);
+}
+footer .social-links a:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Estilos del Tema Original (Adaptados) --- */
 
 /* Estilo para la imagen de fondo de la sección Hero */
 .hero {
